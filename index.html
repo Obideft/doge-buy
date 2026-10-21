@@ -1,0 +1,350 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>DOGE BUY — Buy Dogecoin (Demo) · Much Wow</title>
+<meta name="description" content="DOGE BUY — a retro pixel-art Dogecoin demo interface with a DOGE calculator. Demo only: no real payments, no real crypto, nothing collected." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/coin.svg" />
+
+<style>
+/* ================= LOGO SIZE & ANIMATION ================= */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  width: 280px;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  transform-origin: center center;
+  animation: logoFloat 3s ease-in-out infinite;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.25));
+  transition: filter 0.3s ease;
+}
+
+/* Gentle floating effect */
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.035);
+  }
+}
+
+/* Golden glow on hover */
+.brand:hover .brand-logo {
+  filter: drop-shadow(0 0 12px rgba(255, 190, 50, 0.9));
+}
+
+/* Keep the logo and header responsive */
+@media (max-width: 1100px) {
+  .brand-logo {
+    width: 220px;
+  }
+}
+
+@media (max-width: 600px) {
+  .brand-logo {
+    width: 160px;
+  }
+
+  .brand {
+    gap: 7px;
+  }
+}
+
+/* Accessibility: respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .brand-logo {
+    animation: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ======================= TOP BAR ======================= -->
+<header class="topbar">
+  <a class="brand" href="#stage" id="brandLink" aria-label="DOGE BUY home">
+    <img
+      class="brand-logo"
+      id="brandLogo"
+      src="assets/LOGO.png"
+      alt="FROGINALS — DOGE BUY home"
+    />
+    <span class="demo-chip" title="Demo only — nothing is purchased">DEMO</span>
+  </a>
+
+  <button class="nav-toggle" id="navToggle"
+    aria-expanded="false"
+    aria-controls="mainNav"
+    aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="main-nav" id="mainNav" aria-label="Main">
+    <a href="#stage" class="nav-link is-active">HOME</a>
+    <a href="#stage" class="nav-link" data-target="buy">BUY DOGE</a>
+    <a href="#stage" class="nav-link" data-modal="about">ABOUT</a>
+    <a href="#stage" class="nav-link" data-modal="faq">FAQ</a>
+
+    <button class="moon-btn" id="moonBtn" type="button">
+      <img src="assets/coin.svg" alt="" width="22" height="22" />
+      TO THE MOON!
+    </button>
+  </nav>
+</header>
+
+<!-- ======================= MAIN STAGE ======================= -->
+<main class="stage" id="stage">
+
+  <!-- LEFT COLUMN -->
+  <div class="col col-left">
+    <ul class="perks">
+      <li>
+        <img src="assets/sparkle.svg" alt="" class="perk-ico" />
+        <span><b>Instant</b><br />Pretend Processing</span>
+      </li>
+      <li>
+        <img src="assets/card.svg" alt="" class="perk-ico" />
+        <span><b>No Credentials</b><br />Ever Collected</span>
+      </li>
+      <li>
+        <img src="assets/coin.svg" alt="" class="perk-ico" />
+        <span><b>0.00 Real DOGE</b><br />To Your Wallet</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- CENTER COLUMN -->
+  <div class="col col-center">
+    <div class="hero-head">
+      <h1 class="hero-title">
+        <span class="tw">BUY</span>
+        <span class="ty">DOGECOIN</span>
+      </h1>
+      <p class="ribbon">SUPPORTED BY VERY GOOD DOGS</p>
+    </div>
+
+    <!-- PURCHASE PANEL -->
+    <section class="panel" id="buy" aria-label="Demo Dogecoin calculator">
+      <form id="buyForm" class="panel-grid" novalidate>
+
+        <!-- STEP 1 -->
+        <div class="col-a">
+          <h2 class="step-title">1. Enter Amount</h2>
+
+          <label class="field-label" for="usdAmount">USD Amount</label>
+
+          <div class="input-wrap">
+            <span class="input-prefix">$</span>
+            <input
+              id="usdAmount"
+              type="number"
+              min="1"
+              max="100000"
+              step="1"
+              value="10"
+              inputmode="decimal"
+              autocomplete="off"
+            />
+          </div>
+
+          <p class="field-error" id="amountError" role="alert" hidden>
+            Enter $1 – $100,000.
+          </p>
+
+          <div class="quick-row" role="group" aria-label="Quick amounts">
+            <button type="button" class="quick is-active" data-amount="10">$10</button>
+            <button type="button" class="quick" data-amount="25">$25</button>
+            <button type="button" class="quick" data-amount="50">$50</button>
+            <button type="button" class="quick" data-amount="100">$100</button>
+          </div>
+
+          <h2 class="step-title mt">
+            3. You Receive <small>(Estimated)</small>
+          </h2>
+
+          <div class="receive-box">
+            <img src="assets/coin.svg" alt="" class="receive-coin" />
+            <div class="receive-txt">
+              <div class="receive-amount" id="dogeOut">~ 45.45 DOGE</div>
+              <div class="receive-note">
+                at <span id="priceEcho">$0.2200</span> per DOGE — demo price
+              </div>
+            </div>
+          </div>
+
+          <div class="price-ctl">
+            <label for="demoPrice">
+              Demo DOGE price: <strong id="priceLabel">$0.2200</strong>
+            </label>
+
+            <input
+              type="range"
+              id="demoPrice"
+              min="0.01"
+              max="1"
+              step="0.0025"
+              value="0.22"
+              aria-describedby="priceLabel"
+            />
+
+            <button type="button" class="link-btn" id="resetPrice">
+              Reset demo price
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="col-b">
+          <h2 class="step-title">2. Choose Payment Method</h2>
+
+          <div class="pay-list" role="radiogroup" aria-label="Payment method">
+            <label class="pay-option is-selected">
+              <input type="radio" name="pay" value="PayPal (demo)" checked />
+              <img src="assets/paypal.svg" alt="" class="pay-icon" />
+              <span class="pay-name">PayPal</span>
+              <span class="radio-dot" aria-hidden="true"></span>
+            </label>
+
+            <label class="pay-option">
+              <input type="radio" name="pay" value="Credit / Debit Card (demo)" />
+              <img src="assets/card.svg" alt="" class="pay-icon" />
+              <span class="pay-name">Credit / Debit Card</span>
+              <span class="radio-dot" aria-hidden="true"></span>
+            </label>
+          </div>
+
+          <button class="buy-btn" id="buyBtn" type="submit">
+            Buy Now <span aria-hidden="true">→</span>
+          </button>
+
+          <p class="panel-note">
+            <b>Demo only.</b> No redirect, no payment provider is contacted,
+            no card or wallet details are collected, and no DOGE is purchased,
+            sent or received.
+          </p>
+
+          <div class="receipt" id="receipt" role="status" aria-live="polite" hidden></div>
+        </div>
+
+      </form>
+    </section>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="col col-right">
+    <img class="rocket" src="assets/rocket.svg" alt="" aria-hidden="true" />
+  </div>
+
+</main>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="strip">
+  <div class="strip-row">
+
+    <div class="fstep">
+      <img src="assets/paypal.svg" alt="" />
+      <div>
+        <h3>1. Pretend Pay</h3>
+        <p>Pick a demo method. Nothing leaves your browser.</p>
+      </div>
+    </div>
+
+    <div class="fstep">
+      <img src="assets/coin.svg" alt="" />
+      <div>
+        <h3>2. Get Math</h3>
+        <p>We estimate your DOGE from the demo price slider.</p>
+      </div>
+    </div>
+
+    <div class="fstep">
+      <img src="assets/wallet.svg" alt="" />
+      <div>
+        <h3>3. Receive Vibes</h3>
+        <p>Zero coins move. Only pixel art and good vibes.</p>
+      </div>
+    </div>
+
+    <div class="fstep">
+      <img src="assets/shiba-face.svg" alt="" />
+      <div>
+        <h3>4. Enjoy</h3>
+        <p>You're part of the DOGE BUY crew. ❤️</p>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="strip-tag">
+    <img src="assets/paw.svg" alt="" />
+    Much wow. Such demo. Very simple.
+    <img src="assets/paw.svg" alt="" />
+  </p>
+</footer>
+
+<!-- ======================= ABOUT / FAQ MODAL ======================= -->
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" data-close></div>
+
+  <div class="modal-box">
+    <button class="modal-close" type="button" data-close aria-label="Close">✕</button>
+    <h2 class="modal-title" id="modalTitle">About</h2>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<template id="tpl-about">
+  <p><b>DOGE BUY</b> is a parody demo interface built with plain HTML, CSS and JavaScript. It recreates a retro pixel-art purchase flow for learning purposes.</p>
+  <p>The DOGE price is a slider that <b>you</b> control. It is clearly labelled a <b>demo price</b> and is never fetched from an exchange or market feed.</p>
+  <p>No payment forms, no wallet addresses, no card fields and absolutely no seed phrases. Nothing is stored or transmitted anywhere.</p>
+</template>
+
+<template id="tpl-faq">
+  <div class="faq">
+    <details open>
+      <summary>Can I actually buy Dogecoin here?</summary>
+      <p>No. This is a design demo. "Buy Now" only shows an in-page demo summary. No purchase, transfer or payment happens.</p>
+    </details>
+
+    <details>
+      <summary>Where does the price come from?</summary>
+      <p>From the demo price slider — it starts at $0.2200 and is a made-up number for the calculator, not a market quote.</p>
+    </details>
+
+    <details>
+      <summary>Do you collect card details or seed phrases?</summary>
+      <p>Never. There are no credential fields and no backend. Never type a seed phrase into any website.</p>
+    </details>
+
+    <details>
+      <summary>How is the estimate calculated?</summary>
+      <p>Estimated DOGE = USD amount ÷ demo price per DOGE. It updates live whenever either value changes.</p>
+    </details>
+  </div>
+</template>
+
+<script src="script.js"></script>
+</body>
+</html>
