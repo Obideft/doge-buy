@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 40" width="256" height="160" shape-rendering="crispEdges" role="img" aria-label="">
+  <rect x="28" y="4" width="8" height="36" fill="#e2600f"/>
+  <rect x="24" y="9" width="16" height="31" fill="#e2600f"/>
+  <rect x="20" y="14" width="24" height="26" fill="#e2600f"/>
+  <rect x="16" y="19" width="32" height="21" fill="#e2600f"/>
+  <rect x="12" y="24" width="40" height="16" fill="#e2600f"/>
+  <rect x="8" y="29" width="48" height="11" fill="#e2600f"/>
+  <rect x="4" y="34" width="56" height="6" fill="#e2600f"/>
+  <rect x="0" y="38" width="64" height="2" fill="#e2600f"/>
+  <!-- sunlit face -->
+  <rect x="24" y="9" width="8" height="31" fill="#f28a2c"/>
+  <rect x="20" y="14" width="8" height="26" fill="#f28a2c"/>
+  <rect x="16" y="19" width="8" height="21" fill="#f28a2c"/>
+  <rect x="12" y="24" width="8" height="16" fill="#f28a2c"/>
+  <rect x="8" y="29" width="8" height="11" fill="#f28a2c"/>
+</svg>

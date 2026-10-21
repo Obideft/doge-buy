@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 11" width="48" height="33" shape-rendering="crispEdges" role="img" aria-label="Pixel art credit or debit card">
+  <rect x="0" y="0" width="16" height="11" fill="#231509"/>
+  <rect x="1" y="1" width="14" height="9" fill="#fdf6e7"/>
+  <rect x="1" y="2" width="14" height="2" fill="#231509"/>
+  <rect x="2" y="6" width="4" height="3" fill="#f4761f"/>
+  <rect x="2" y="6" width="4" height="1" fill="#ff9d3f"/>
+  <rect x="7" y="7" width="7" height="1" fill="#b9ae9d"/>
+  <rect x="7" y="8" width="5" height="1" fill="#d5cbb8"/>
+</svg>
